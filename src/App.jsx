@@ -1,5 +1,7 @@
-import './style/style.css'
+import React from 'react';
+import { RepositoryList } from './components/RepositoryList';
+import './style/style.scss'
 
 export function App() {
-    return <h1>Hello world</h1>
+    return <RepositoryList />
 }
