@@ -1,18 +1,21 @@
-import React from 'react';
 import { useState, useEffect } from 'react'
 import { RepositoryItem } from './RepositoryItem';
 import '../style/repositories.scss'
 
-// https://api.github.com/orgs/rocketseat/repos
-
-const repository = {
-    title: 'Repository -  Item',
-    description: 'Forms in React',
-    link: 'https://github.com/Apariciolemes/Webpack-config',
+interface Repository {
+    name: string
+    description: string
+    html_url: string
 }
 
+const repository = {
+    name: 'Repository -  Item',
+    description: 'Forms in React',
+    html_url: 'https://github.com/Apariciolemes/Webpack-config',
+} as Repository
+
 export function RepositoryList() {
-    const [repositories, setRepositories] = useState([])
+    const [repositories, setRepositories] = useState<Repository[]>([])
 
     useEffect(() => {
         fetch("https://api.github.com/orgs/rocketseat/repos").then(resp => resp.json()).then(data => setRepositories(data))
